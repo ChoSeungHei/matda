@@ -1,6 +1,6 @@
 import {rootURL} from '../config/config';
 
-const fetchJoin = async(email,pw,name,pwAnswer,isSeoul,address) =>{
+const fetchJoin = async(email,pw,name,pwAnswer,isSeoul,address,pwQId) =>{
     fetch(rootURL+"/join",{
       method: "POST",
       headers: {
@@ -10,7 +10,7 @@ const fetchJoin = async(email,pw,name,pwAnswer,isSeoul,address) =>{
         email: email,
         password: pw,
         name : name,
-        pw_question_id : 1,
+        pw_question_id : pwQId,
         pw_answer : pwAnswer,
         is_seoul : isSeoul,
         address : address
@@ -23,4 +23,9 @@ const fetchJoin = async(email,pw,name,pwAnswer,isSeoul,address) =>{
     )
   };
 
-export {fetchJoin};
+const regionList = () => {
+  return fetch(rootURL+"/regionList")
+  .then(response => {return response.json()});
+}
+
+export {fetchJoin,regionList};
