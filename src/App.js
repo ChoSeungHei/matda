@@ -1,10 +1,14 @@
-import React,{useState,useEffect,Component} from 'react';
-import Join from './pages/Join';
-
+import React,{Component} from 'react';
+import { Route } from 'react-router-dom';
+import { Home, Join ,Login } from './pages';
 class App extends Component {
   render(){
     return(
-      <Join/>
+      <div>
+        <Route exact path="/" component={Home}/>
+        <Route path="/Join" component={Join}/>
+        <Route path="/Login" component={Login}/>
+    </div>
     );
   };
 }
