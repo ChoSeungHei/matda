@@ -20,4 +20,8 @@ const CheckPw = (str) =>
     }                            
 }  
 
-export {CheckEmail,CheckPw};
+const goBack = () => {
+    window.history.back();
+}
+
+export {CheckEmail,CheckPw,goBack};

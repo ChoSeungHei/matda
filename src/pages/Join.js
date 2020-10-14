@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import {fetchJoin,regionList} from '../API/loginAPI';
 import '../css/style.css';
 import '../css/check_mark.css';
-import {CheckEmail,CheckPw} from '../function/reg_check';
+import {CheckEmail,CheckPw,goBack} from '../function/reg_check';
+import { FiChevronLeft } from "react-icons/fi";
 
 const Join = () => {
   const [email,setEmail] = useState('');
@@ -123,6 +124,9 @@ const Join = () => {
   const regionSet = region.map((obj) => (<option key={obj.id} value={obj.name}>{obj.name}</option>) );
   return(
       <div className="form_container">
+        <div className="row">
+            <FiChevronLeft onClick={goBack} size="1.5em" className="left_arrow"/>
+        </div>
         <div className="row">
           <div className="col text-center m-5">
             <h3>회원가입 <span role="img" aria-label="balloon">🎈</span> </h3>

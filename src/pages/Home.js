@@ -1,14 +1,33 @@
-import React from 'react';
-import { FiMenu,FiChevronRight } from "react-icons/fi";
+import React,{useState} from 'react';
+import { FiMenu,FiChevronRight,FiX } from "react-icons/fi";
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+    const [isopen,setIsopen] = useState(false);
+
     const goMenu = () => {
-        console.log('click');
+        setIsopen(!isopen);
     }
 
     return (
         <div>
+            {
+                isopen ? (
+                    <div>
+                        <div className="div2">
+                            <div className="row">
+                                <div className="col m-4">
+                                    <FiX size="1.5em" onClick={goMenu}/>
+                                </div>  
+                            </div>
+                            <div className="login_box">
+                                
+                            </div>
+                        </div>
+                        <div className="div1" onClick={goMenu}></div>
+                    </div>
+                ):null
+            }
             <div className="row">
                 <div className="col m-4">
                     <h3>Matda<span role="img" aria-label="hamburger">🍔</span> </h3>
@@ -20,7 +39,7 @@ const Home = () => {
             <div className="login_div vertical-center">
                 <div className="m-4">
                     <FiChevronRight size={"1.5em"}/>
-                    <Link to="/login"><span className="align-middle">로그인 해주세요</span></Link>
+                    <Link to="/login"><span className="align-middle link_style">로그인 해주세요</span></Link>
                 </div>
             </div>
         </div>

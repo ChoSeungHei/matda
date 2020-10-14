@@ -1,5 +1,9 @@
 import React,{useState} from 'react';
 import {fetchLogin} from '../API/loginAPI';
+import { Link } from 'react-router-dom';
+import { FiChevronLeft } from "react-icons/fi";
+import {goBack} from '../function/reg_check';
+
 const Login = () => {
     const [email,setEmail] = useState('');
     const [pw,setPw] = useState('');
@@ -17,34 +21,49 @@ const Login = () => {
         .then(res => {
             if(res.success == "Y")
             {
-                console.log('login success');
+                const temp =  JSON.parse(res.rows);
+                localStorage.setItem("email",email);
+                localStorage.setItem("name",temp[0].name);
             }
             else
             {
-                console.log('login fail');
+                alert("아이디 혹은 비밀번호 오류");
+                setEmail("");
+                setPw("");
             }
         })
     }
+
     return(
-        <div className="form_container">
-            <div className="row">
-                <div className="col text-center m-5">
-                    <h3>로그인 <span role="img" aria-label="balloon">🥑</span> </h3>
+        <div>
+            <div className="form_container">
+                <div className="row">
+                    <FiChevronLeft onClick={goBack} size="1.5em" className="left_arrow"/>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col text-center m-1 form-inline">
-                    <input className="form-control" maxLength="50" placeholder="Email" autoFocus onChange={changeEmail} value={email}/>
+                <div className="row">
+                    <div className="col text-center m-5">
+                        <h3>로그인 <span role="img" aria-label="balloon">🥑</span> </h3>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col text-center m-1 form-inline">
-                    <input type="password" maxLength="20" className="form-control" placeholder="Password" onChange={changePassword} value={pw}/>
+                <div className="row">
+                    <div className="col text-center m-1">
+                        <input className="form-control" maxLength="50" placeholder="Email" autoFocus onChange={changeEmail} value={email}/>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col m-1">
-                    <button onClick={handleSubmit} type="button" className="btn btn-info">로그인</button>
+                <div className="row">
+                    <div className="col text-center m-1">
+                        <input type="password" maxLength="20" className="form-control" placeholder="Password" onChange={changePassword} value={pw}/>
+                    </div>
+                </div>
+                <div className="row text-center">
+                    <div className="col m-1">
+                        <button onClick={handleSubmit} type="button" className="btn btn-info">로그인</button>
+                    </div>
+                </div>
+                <div className="row text-center">
+                    <div className="col m-1"> 
+                        <Link to="/join"><u className="link_style"onClick={handleSubmit}>회원가입</u></Link>
+                    </div>
                 </div>
             </div>
         </div>
