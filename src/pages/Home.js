@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { FiMenu,FiChevronRight,FiX } from "react-icons/fi";
 import { Link } from 'react-router-dom';
-import Listview from '../template/Listview';
 
 const Home = () => {
     const [isopen,setIsopen] = useState(false);
@@ -11,6 +10,10 @@ const Home = () => {
     
     const goMenu = () => {
         setIsopen(!isopen);
+    }
+
+    const goSubmenu = (id) => {
+        console.log(id);
     }
 
     useEffect(() => {
@@ -24,7 +27,8 @@ const Home = () => {
         }
     },[]);
   
-    const items = [{id:1,title:"로그아웃"}];
+    const items = [{id:0,title:"회원정보"},{id:1,title:"공지사항"},{id:2,title:"로그아웃"}];
+    const menuList = items.map((menu,index)=>(<div className="m-3" key={index} onClick={()=>goSubmenu(menu.id)}>{menu.title}<hr/></div>))
     return (
         <div>
             {
@@ -41,7 +45,9 @@ const Home = () => {
                                     {name}<br/> 
                                     등록리뷰: 0건
                                 </div>
-                                <Listview items={items}/>
+                            </div>
+                            <div className="m-4">
+                                {menuList}
                             </div>
                         </div>
                         <div className="div1" onClick={goMenu}></div>
