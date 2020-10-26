@@ -21,6 +21,7 @@ const CheckPw = (str) =>
 }  
 
 const goBack = () => {
+    console.log('test');
     window.history.back();
 }
 

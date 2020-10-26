@@ -71,3 +71,13 @@
     height: 110px;
     margin: 10%;
 }
+.bar_arrow{
+    margin-top: 30px;
+    margin-left: 30px;
+    z-index: 2;
+}
+
+.bar_title{
+    margin-top: 30px;
+    margin-left: -30px;
+}

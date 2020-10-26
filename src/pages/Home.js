@@ -12,10 +12,6 @@ const Home = () => {
         setIsopen(!isopen);
     }
 
-    const goSubmenu = (id) => {
-        console.log(id);
-    }
-
     useEffect(() => {
         var test = localStorage.getItem("email");
         var test2 = localStorage.getItem("name");
@@ -27,8 +23,8 @@ const Home = () => {
         }
     },[]);
   
-    const items = [{id:0,title:"회원정보"},{id:1,title:"공지사항"},{id:2,title:"로그아웃"}];
-    const menuList = items.map((menu,index)=>(<div className="m-3" key={index} onClick={()=>goSubmenu(menu.id)}>{menu.title}<hr/></div>))
+    const items = [{id:0,title:"회원정보",link:"/userinfo"},{id:1,title:"공지사항",link:"/"},{id:2,title:"로그아웃",link:"/"}];
+    const menuList = items.map((menu,index)=>(<div className="m-3" key={menu.id}><Link to={menu.link}><span className="link_style">{menu.title}</span></Link><hr/></div>))
     return (
         <div>
             {
