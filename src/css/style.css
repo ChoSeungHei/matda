@@ -53,7 +53,8 @@
     position: absolute;
     top: 0;
     width: 30%;
-    height: 100vh;
+    height: 100%;
+    overflow-x: hidden;
     z-index: 2;
 }
 .div2 {
@@ -62,7 +63,8 @@
     top: 0;
     left:30%;
     width: 70%;
-    height: 100vh;
+    height: 100%;
+    overflow-x: hidden;
     z-index: 2;
    }
 .login_box{
@@ -81,3 +83,12 @@
     margin-top: 30px;
     margin-left: -30px;
 }
+
+.pw_ck{
+    margin: 45px 45px 30px 45px;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    }

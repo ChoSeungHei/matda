@@ -42,4 +42,19 @@ const fetchLogin = (email,pw) => {
   .then(response => {return response.json()});
 }
 
-export {fetchJoin,regionList,fetchLogin};
+const fetchUser = (email) => {
+  return fetch(rootURL + "/userinfo",{
+    method: "POST",
+    headers:{
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email
+    })
+  })
+  .then(response => {
+    return response.json()
+  });
+}
+
+export {fetchJoin,regionList,fetchLogin,fetchUser};

@@ -1,12 +1,11 @@
 import React,{useState,useEffect} from 'react';
-import 'bootstrap/dist/css/bootstrap.css'
 import {fetchJoin,regionList} from '../API/loginAPI';
 import '../css/style.css';
 import '../css/check_mark.css';
 import {CheckEmail,CheckPw,goBack} from '../function/reg_check';
 import { FiChevronLeft } from "react-icons/fi";
 
-const Join = () => {
+const Join = ({ history }) => {
   const [email,setEmail] = useState('');
   const [pw,setPw] = useState('');
   const [name,setName] = useState('');
@@ -113,6 +112,7 @@ const Join = () => {
     {
         fetchJoin(email,pw,name,pwAnswer,isSeoul,address,pwQId);
         alert("회원가입 완료");
+        history.push('/');
     }
     
   }

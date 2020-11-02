@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FiChevronLeft } from "react-icons/fi";
 import {goBack} from '../function/reg_check';
 
-const Login = () => {
+const Login = ({history}) => {
     const [email,setEmail] = useState('');
     const [pw,setPw] = useState('');
 
@@ -24,6 +24,7 @@ const Login = () => {
                 const temp =  JSON.parse(res.rows);
                 localStorage.setItem("email",email);
                 localStorage.setItem("name",temp[0].name);
+                history.push('/');
             }
             else
             {
@@ -62,7 +63,7 @@ const Login = () => {
                 </div>
                 <div className="row text-center">
                     <div className="col m-1"> 
-                        <Link to="/join"><u className="link_style"onClick={handleSubmit}>회원가입</u></Link>
+                        <Link to="/join"><u className="link_style">회원가입</u></Link>
                     </div>
                 </div>
             </div>
