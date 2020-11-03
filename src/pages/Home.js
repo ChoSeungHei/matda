@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/style.css';
+import MainMap from '../utils/MainMap';
 
 const Home = ({history}) => {
     const [isopen,setIsopen] = useState(false);
@@ -110,9 +111,11 @@ const Home = ({history}) => {
             <div className="login_div vertical-center">
                 {
                     isLogin? (
-                    <div className="m-4">
-                        {name}님 안녕하세요.
-                    </div>
+                    <>
+                        <div className="m-4">
+                            {name}님 안녕하세요.
+                        </div>
+                    </>
                     ):(
                         <div className="m-4">
                             <FiChevronRight size={"1.5em"}/>
@@ -121,6 +124,7 @@ const Home = ({history}) => {
                     )
                 }
             </div>
+            <MainMap/>
                 <Modal show={show} onHide={handleClose} centered>
                     <Modal.Header closeButton>
                     <Modal.Title>로그아웃</Modal.Title>
