@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/style.css';
 import MainMap from '../utils/MainMap';
+import {fetchNumofReview} from '../API/reviewAPI';
 
 const Home = ({history}) => {
     const [isopen,setIsopen] = useState(false);
@@ -13,6 +14,7 @@ const Home = ({history}) => {
     const [name,setName] = useState('');
     const [isLogin,setIsLogin] = useState(false);
     const [show, setShow] = useState(false);
+    const [num,setNum] = useState(0);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -28,6 +30,14 @@ const Home = ({history}) => {
             setEmail(test);
             setName(test2);
             setIsLogin(true);
+
+            fetchNumofReview(test)
+            .then(res=>{
+                if(res.success == 'Y')
+                {
+                    setNum(res.num);
+                }
+            })
         }
     },[]);
     
@@ -72,7 +82,7 @@ const Home = ({history}) => {
                                 <div className="login_box vertical-center">
                                     <div className="m-3">
                                         {name}<br/> 
-                                        등록리뷰: 0건
+                                        등록리뷰: {num}건
                                     </div>
                                 </div>
                                 <div className="m-4">
@@ -124,7 +134,7 @@ const Home = ({history}) => {
                     )
                 }
             </div>
-            <MainMap/>
+            {/* <MainMap/> */}
                 <Modal show={show} onHide={handleClose} centered>
                     <Modal.Header closeButton>
                     <Modal.Title>로그아웃</Modal.Title>

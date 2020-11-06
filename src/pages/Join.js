@@ -123,17 +123,22 @@ const Join = ({ history }) => {
 
   const regionSet = region.map((obj) => (<option key={obj.id} value={obj.name}>{obj.name}</option>) );
   return(
-      <div className="form_container">
+      <div>
         <div className="row">
-            <FiChevronLeft onClick={goBack} size="1.5em" className="left_arrow"/>
+            <div className="bar_arrow">
+                <FiChevronLeft size="1.5em" onClick={goBack}/>
+            </div>
+            <div className="col text-center bar_title">
+                회원가입
+            </div>
         </div>
         <div className="row">
           <div className="col text-center m-5">
-            <h3>회원가입 <span role="img" aria-label="balloon">🎈</span> </h3>
+            <h3>Matda <span role="img" aria-label="balloon">🎈</span> </h3>
           </div>
         </div>
         <div className="row">
-          <div className="col text-center m-1 form-inline">
+          <div className="col text-center login_input form-inline">
             <input className="form-control input-width" maxLength="50" placeholder="Email" autoFocus onChange={changeEmail} value={email}/>
               {
                 emailCk === true ? (
@@ -148,7 +153,7 @@ const Join = ({ history }) => {
           </div>
         </div>
         <div className="row">
-          <div className="col text-center m-1 form-inline">
+          <div className="col text-center login_input form-inline">
             <input type="password" maxLength="20" className="form-control input-width" placeholder="Password" onChange={changePassword} value={pw}/>
             {
                 pwCk === true ? (
@@ -163,7 +168,7 @@ const Join = ({ history }) => {
           </div>
         </div>
         <div className="row">
-          <div className="col text-center m-1 form-inline">
+          <div className="col text-center login_input form-inline">
             <input maxLength="20" className="form-control input-width" placeholder="Name" onChange={changeName} value={name}/>
             {
                 nameCk === true ? (
@@ -178,7 +183,7 @@ const Join = ({ history }) => {
           </div>
         </div>
         <div className="row">
-          <div className="col text-center m-1">
+          <div className="col text-center login_input">
               <select className="form-control input-width" id="exampleFormControlSelect1" onChange={changeQuestion}>
                 <option value="1">졸업한 초등학교 이름은?</option>
                 <option value="2">가장 좋아하는 색은?</option>
@@ -189,7 +194,7 @@ const Join = ({ history }) => {
           </div>
         </div>
         <div className="row">
-          <div className="col m-1 form-inline">
+          <div className="col login_input form-inline">
             <input maxLength="20" className="form-control input-width" placeholder="PwAnswer" onChange={changeAnswer} value={pwAnswer}/>
             {
                 pwACk === true ? (
@@ -204,7 +209,7 @@ const Join = ({ history }) => {
           </div>
         </div>
         <div className="row">
-          <div className="col m-1">
+          <div className="col login_input">
               <div className="custom-control custom-radio">
                 <input type="radio" id="customRadio1" name="customRadio" className="custom-control-input" value={true} onChange={changeIsSeoul} defaultChecked/>
                 <label className="custom-control-label" htmlFor="customRadio1">수도권</label>
@@ -218,7 +223,7 @@ const Join = ({ history }) => {
         {
           isSeoul === "true" ? (
             <div className="row">
-              <div className="col m-1 form-inline">
+              <div className="col login_input form-inline">
                 <select className="form-control input-width" id="exampleFormControlSelect1" onChange={changeAddress}>
                   {regionSet}
                 </select>
@@ -227,7 +232,7 @@ const Join = ({ history }) => {
           ):null
         }
         <div className="row">
-          <div className="col m-1">
+          <div className="col login_input">
             <button onClick={handleSubmit} type="button" className="btn btn-info">제출</button>
           </div>
         </div>

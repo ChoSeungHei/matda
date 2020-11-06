@@ -32,7 +32,7 @@ const MainMap =(props) => {
             // Get address from latitude & longitude.
             Geocode.fromLatLng(latitude, longitude).then(
               response => {
-                const address = response.results[0].formatted_address;
+                const address = response.results[5].formatted_address;
                 setAddr(address);
                 console.log(address);
               },

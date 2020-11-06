@@ -37,22 +37,28 @@ const Login = ({history}) => {
 
     return(
         <div>
-            <div className="form_container">
+            <div>
                 <div className="row">
-                    <FiChevronLeft onClick={goBack} size="1.5em" className="left_arrow"/>
+                    <div className="bar_arrow">
+                        <FiChevronLeft size="1.5em" onClick={goBack}/>
+                    </div>
+                    <div className="col text-center bar_title">
+                       로그인
+                    </div>
                 </div>
+
                 <div className="row">
                     <div className="col text-center m-5">
-                        <h3>로그인 <span role="img" aria-label="balloon">🥑</span> </h3>
+                        <h3>Matda <span role="img" aria-label="balloon">🥑</span> </h3>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col text-center m-1">
+                    <div className="col text-center login_input">
                         <input className="form-control" maxLength="50" placeholder="Email" autoFocus onChange={changeEmail} value={email}/>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col text-center m-1">
+                    <div className="col text-center login_input">
                         <input type="password" maxLength="20" className="form-control" placeholder="Password" onChange={changePassword} value={pw}/>
                     </div>
                 </div>
