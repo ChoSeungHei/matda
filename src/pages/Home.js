@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/style.css';
 import MainMap from '../utils/MainMap';
-import {fetchNumofReview} from '../API/reviewAPI';
+import {fetchNumofReview,fetchMyTop3} from '../API/reviewAPI';
 
 const Home = ({history}) => {
     const [isopen,setIsopen] = useState(false);
@@ -15,6 +15,8 @@ const Home = ({history}) => {
     const [isLogin,setIsLogin] = useState(false);
     const [show, setShow] = useState(false);
     const [num,setNum] = useState(0);
+    const [mytop,setMyTop] = useState([]);
+    const [load,setLoad] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -38,6 +40,23 @@ const Home = ({history}) => {
                     setNum(res.num);
                 }
             })
+
+            fetchMyTop3(test)
+            .then(res => {
+                if(res.success == 'Y')
+                {
+                    setMyTop(JSON.parse(res.rows));
+                    
+                    if(res.rows != "[]" )
+                    {
+                      setLoad(true);
+                    }
+                }
+                else
+                {
+                    console.log(res.rows);
+                }
+            })
         }
     },[]);
     
@@ -52,6 +71,9 @@ const Home = ({history}) => {
             case 2:
                 handleShow();
                 break;
+            case 3:
+                 history.push('/myreview');
+                break;
             default:
                 break;
         }
@@ -65,8 +87,10 @@ const Home = ({history}) => {
         setIsLogin(false);
         setName('');
     }
-    const items = [{id:0,title:"회원정보",link:"/userinfo"},{id:1,title:"공지사항",link:"/"},{id:2,title:"로그아웃",link:"/"}];
+    const items = [{id:0,title:"회원정보",link:"/userinfo"},{id:3,title:"마이 리뷰",link:"/MyReview"},{id:1,title:"공지사항",link:"/"},{id:2,title:"로그아웃",link:"/"}];
     const menuList = items.map((menu,index)=>(<div className="m-3" key={menu.id} onClick={()=>goSubmenu(menu.id)}>{menu.title}<hr/></div>))
+
+    const mytopList = mytop.map((top,index)=>(<div key={index}>{index+1}.{top.title}({top.location},{top.rate}점)</div>))
     return (
         <div>
             {
@@ -135,6 +159,18 @@ const Home = ({history}) => {
                 }
             </div>
             {/* <MainMap/> */}
+            <div className="mytop_box">
+                {
+                    load ? (
+                        <div>
+                            <strong>나의 랭킹 Top3</strong>
+                            {mytopList}
+                        </div>
+                    ):(
+                        <strong>랭킹 준비중</strong>
+                    )
+                }
+            </div>
                 <Modal show={show} onHide={handleClose} centered>
                     <Modal.Header closeButton>
                     <Modal.Title>로그아웃</Modal.Title>

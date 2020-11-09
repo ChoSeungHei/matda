@@ -100,3 +100,13 @@ html, body {
 .login_input{
     margin: 0 25px 10px 25px;
 }
+
+.ranking_box{
+    margin-top: 220px;
+    margin-left: 20px;
+}
+
+.mytop_box{
+    margin-top: 20px;
+    margin-left: 20px;
+}

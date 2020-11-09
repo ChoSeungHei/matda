@@ -36,4 +36,50 @@ const fetchNumofReview = async(email) => {
     });
 };
 
-export {fetchReview,fetchNumofReview};
+const fetchMyTop3 = async(email) => {
+  return fetch(rootURL + "/mytop3",{
+    method: "POST",
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      email:email
+    })
+  })
+  .then(response => {
+    return response.json()
+  });
+};
+
+const fetchAddrTop3 = async(addr) => {
+  return fetch(rootURL + "/addrtop3",{
+     method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        location: addr
+      })
+  })
+  .then(response => {
+    return response.json()
+  });
+};
+
+const fetchMyReview = async(email,page) => {
+  return fetch(rootURL + "/myreview",{
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        email:email,
+        page: page
+      })
+  })
+  .then(response => {
+    return response.json()
+  });
+};
+
+export {fetchReview,fetchNumofReview,fetchMyTop3,fetchAddrTop3,fetchMyReview};
