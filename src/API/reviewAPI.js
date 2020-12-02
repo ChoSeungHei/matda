@@ -82,4 +82,18 @@ const fetchMyReview = async(email,page) => {
   });
 };
 
-export {fetchReview,fetchNumofReview,fetchMyTop3,fetchAddrTop3,fetchMyReview};
+const fetchTotalCnt = async(email) => {
+  return fetch(rootURL + "/totalcnt",{
+    method: "POST",
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      email:email
+    })
+  })
+  .then(response => {
+    return response.json()
+  });
+}
+export {fetchReview,fetchNumofReview,fetchMyTop3,fetchAddrTop3,fetchMyReview,fetchTotalCnt};

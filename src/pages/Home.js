@@ -90,7 +90,14 @@ const Home = ({history}) => {
     const items = [{id:0,title:"회원정보",link:"/userinfo"},{id:3,title:"마이 리뷰",link:"/MyReview"},{id:1,title:"공지사항",link:"/"},{id:2,title:"로그아웃",link:"/"}];
     const menuList = items.map((menu,index)=>(<div className="m-3" key={menu.id} onClick={()=>goSubmenu(menu.id)}>{menu.title}<hr/></div>))
 
-    const mytopList = mytop.map((top,index)=>(<div key={index}>{index+1}.{top.title}({top.location},{top.rate}점)</div>))
+    const mytopList = mytop.map((top,index)=>(
+        <tr key={index}>
+            <th scope="row">{index+1}</th>
+            <td>{top.title}</td>
+            <td class="table_addr" title={top.location}>{top.location}</td>
+            <td>{top.rate} 점</td>
+      </tr>
+    ));
     return (
         <div>
             {
@@ -134,7 +141,7 @@ const Home = ({history}) => {
                     )
                 ):null
             }
-            <div className="row">
+            <div className="row header_div">
                 <div className="col m-4">
                     <h3>Matda<span role="img" aria-label="hamburger">🍔</span> </h3>
                 </div>
@@ -158,13 +165,25 @@ const Home = ({history}) => {
                     )
                 }
             </div>
-            {/* <MainMap/> */}
+            <MainMap/>
             <div className="mytop_box">
                 {
                     load ? (
                         <div>
                             <strong>나의 랭킹 Top3</strong>
-                            {mytopList}
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">상호</th>
+                                    <th scope="col">주소</th>
+                                    <th scope="col">점수</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {mytopList}
+                                </tbody>
+                            </table>
                         </div>
                     ):(
                         <strong>랭킹 준비중</strong>
@@ -185,6 +204,11 @@ const Home = ({history}) => {
                     </Button>
                     </Modal.Footer>
                 </Modal>
+                <div className="footer_div">
+                    https://github.com/ChoSeungHei<br/>
+                    kwa0403261@gmail.com<br/>
+                    Copyright 2020. ChoSeungHei all rights reserved.
+                </div>
         </div>
     );
 };

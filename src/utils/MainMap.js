@@ -64,7 +64,14 @@ const MainMap =(props) => {
         });
     },[]);
 
-    const mytopList = rank.map((top,index)=>(<div key={index}>{index+1}.{top.title}({top.location},{top.rate}점)</div>))
+    const mytopList = rank.map((top,index)=>(
+      <tr key={index}>
+        <th scope="row">{index+1}</th>
+        <td>{top.title}</td>
+        <td class="table_addr" title={top.location}>{top.location}</td>
+        <td>{top.rate} 점</td>
+      </tr>));
+
     return (
       load ? (
           <div>
@@ -85,7 +92,19 @@ const MainMap =(props) => {
                   isFull ? (
                     <div>
                       <strong>지역 랭킹 Top3</strong>
-                      {mytopList}
+                      <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">상호</th>
+                            <th scope="col">주소</th>
+                            <th scope="col">점수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {mytopList}
+                        </tbody>
+                      </table>
                     </div>
                   ):(
                     <strong>랭킹 준비중</strong>
