@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Matda (나만의 맛집 다이어리)
+위치 기반 맛집 리뷰 등록 시스템
 
-## Available Scripts
+## 개발 환경
+FrontEnd : React, CSS
 
-In the project directory, you can run:
+BackEnd : GCP, Nginx, Nodejs
 
-### `yarn start`
+라이브러리 : react-bootstrap, react-geocode, react-router-dom, react-rating-stars-component, react-icons, google-maps-react
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 개발 데모
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. 전체 화면 구성
+    - 현재 위치 지도
+    - 현재 위치 지역랭킹 Top 3
+    - 나만의 랭킹 Top 3
 
-### `yarn test`
+![1](https://user-images.githubusercontent.com/29883635/101117523-7c7c9d80-362a-11eb-9e54-4dcea051ad6e.gif)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+2. 현재 음식점 리뷰하기
+    - 상호, 별점, 한줄평 등록
+    - 마이 리뷰에 등록되어 열람 가능
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![2](https://user-images.githubusercontent.com/29883635/101117748-0fb5d300-362b-11eb-9837-6f0412e20cad.gif)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+3. 회원 정보
+    - 비밀번호 재 입력 후 열람 가능
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![3](https://user-images.githubusercontent.com/29883635/101117814-3542dc80-362b-11eb-91e5-1c8320475cf7.gif)
 
-### `yarn eject`
+4. 마이 리뷰
+    - 작성한 리뷰 최신 순으로 열람 가능
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![4](https://user-images.githubusercontent.com/29883635/101117816-370ca000-362b-11eb-94c3-bbd9d83101a3.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. 로그아웃 모달
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![5](https://user-images.githubusercontent.com/29883635/101117818-38d66380-362b-11eb-830a-6d56bc3b828d.gif)
